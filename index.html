@@ -3,13 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
+    <title>L’Oréal Beauty Concierge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -17,49 +15,76 @@
 
   <body>
     <div class="page-wrapper">
-      <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <div class="brand-bar">
+          <img src="img/loreal-logo.png" alt="L’Oréal logo" class="brand-logo" />
+          <div>
+            <p class="eyebrow">L’Oréal Beauty Concierge</p>
+            <h1 class="site-title">Luxury Beauty Advice</h1>
+          </div>
+        </div>
+        <p class="subtitle">
+          Ask about skincare, makeup, haircare, fragrance, and premium beauty
+          routines.
+        </p>
       </header>
 
-      <!------- Chat Area ------->
       <main>
-        <section class="chatbox">
-          <div id="chatWindow" class="chat-window">
-            <!-- messages will be appended here via JS -->
+        <section class="chat-card" aria-label="L’Oréal beauty chatbot">
+          <div class="latest-panel" aria-live="polite">
+            <div class="panel-section">
+              <p class="panel-label">Latest question</p>
+              <p id="latestQuestionText" class="panel-value">
+                Start with your first beauty question to receive L’Oréal product
+                recommendations.
+              </p>
+            </div>
+            <div class="panel-section panel-answer">
+              <p class="panel-label">Latest answer</p>
+              <p id="latestAnswerText" class="panel-value">
+                Bonjour! I’m your L’Oréal Beauty Advisor. Ask me about skincare,
+                makeup, haircare, fragrance, or beauty routines.
+              </p>
+            </div>
+          </div>
+
+          <div id="conversation" class="conversation-history" aria-live="polite"></div>
+
+          <div id="typingIndicator" class="typing-indicator hidden" role="status" aria-live="assertive">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span>Thinking in beauty...</span>
           </div>
 
           <form id="chatForm" class="chat-form">
-            <label for="userInput" class="visually-hidden">Message</label>
+            <label for="userInput" class="input-label">Type your message</label>
             <input
               id="userInput"
               name="userInput"
               type="text"
-              placeholder="Ask me about products or routines…"
+              placeholder="Ask about L’Oréal skincare, makeup, or haircare…"
               autocomplete="off"
               required
             />
-            <button type="submit" id="sendBtn">
-              <span class="material-icons">send</span>
-              <span class="visually-hidden">Send</span>
+            <button type="submit" id="sendBtn" class="primary-button">
+              Send
+            </button>
+            <button type="button" id="clearBtn" class="secondary-button">
+              Clear
             </button>
           </form>
         </section>
       </main>
 
-      <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
-        <nav>
-          <!-- These URLs are placeholders -->
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Contact</a>
-        </nav>
+        <p>
+          This chatbot is designed for beauty advice. For sensitive skin or scalp
+          concerns, consult a qualified professional.
+        </p>
       </footer>
     </div>
 
-    <!-- secrets.js can be removed when using Cloudflare Workers for API requests -->
     <script src="secrets.js"></script>
     <script src="script.js"></script>
   </body>
